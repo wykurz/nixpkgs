@@ -2663,6 +2663,8 @@ in {
 
   curtsies = callPackage ../development/python-modules/curtsies { };
 
+  gdax-python = callPackage ../development/python-modules/gdax-python { };
+
   jsonrpc-async = callPackage ../development/python-modules/jsonrpc-async { };
 
   jsonrpc-base = callPackage ../development/python-modules/jsonrpc-base { };
