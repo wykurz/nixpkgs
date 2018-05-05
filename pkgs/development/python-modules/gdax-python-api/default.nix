@@ -11,6 +11,8 @@
 , aiohttp
 , async-timeout
 , sortedcontainers
+, asynctest
+, pytest
 }:
 
 buildPythonPackage rec {
@@ -18,24 +20,24 @@ buildPythonPackage rec {
   version = "0.2";
   name = "${pname}-${version}";
 
-  buildInputs = [ codecov pytest-asyncio pytestcov pytest-mock ];
+  buildInputs = [ codecov pytest pytest-asyncio pytestcov pytest-mock asynctest ];
   propagatedBuildInputs = [ aiofiles aiohttp async-timeout sortedcontainers ];
 
   checkPhase = ''
-    ${python.interpreter} test/test.py
+    ${python.interpreter} -m pytest tests
   '';
 
   src = fetchgit {
     url = "${meta.homepage}.git";
-    rev = "a2c2cb339ef4193ce62e17bb57367021246f359b";
-    sha256 = "018rl6wl36ihizas79czjpwax2pp9fd9xb9ymy3f9hdcxf0f8jqz";
+    rev = "7eec4ef442905c8d9e2f1f3aec032e3d13c6803d";
+    sha256 = "0ysrv7hyh4qdb67xikzibphl78ff4mgf309n73fk8c0l3wy14920";
   };
 
   disabled = pythonOlder "3.6";
 
   meta = with stdenv.lib; {
     description = "Unofficial GDAX API client written in Python3 using async/await";
-    homepage    = https://github.com/csko/gdax-python-api;
+    homepage    = https://github.com/wykurz/gdax-python-api;
     license     = licenses.mit;
     maintainers = with maintainers; [ wykurz ];
   };
