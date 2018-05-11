@@ -2661,6 +2661,8 @@ in {
 
   cryptography_vectors = callPackage ../development/python-modules/cryptography_vectors { };
 
+  crypto_lib = callPackage ../development/python-modules/crypto_lib { };
+
   crypto_trader = callPackage ../development/python-modules/crypto_trader { };
 
   curtsies = callPackage ../development/python-modules/curtsies { };
